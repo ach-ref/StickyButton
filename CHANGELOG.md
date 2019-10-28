@@ -1,5 +1,8 @@
 # Change Log
 
+## [1.0.3](https://github.com/ach-ref/StickyButton/tree/1.0.3) (2019-10-28)
+[Full Changelog](https://github.com/ach-ref/StickyButton/compare/1.0.2...1.0.3)
+
 ## [1.0.2](https://github.com/ach-ref/StickyButton/tree/1.0.2) (2019-10-28)
 [Full Changelog](https://github.com/ach-ref/StickyButton/compare/1.0.1...1.0.2)
 
