@@ -1,0 +1,17 @@
+PODS:
+  - StickyButton (1.0)
+
+DEPENDENCIES:
+  - StickyButton (from `.`)
+
+EXTERNAL SOURCES:
+  StickyButton:
+    :path: "."
+    :target: StickyButtonExample
+
+SPEC CHECKSUMS:
+  StickyButton: 3f333ca1f1e338a47b13e53cd7ee017289d11bab
+
+PODFILE CHECKSUM: caec10bfef7fe68f7c072edf17fca2c497f06eb3
+
+COCOAPODS: 1.8.4

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="StickyButtonExample" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HTl-8H-AsL">
+                                <rect key="frame" x="20" y="144" width="33.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="spl-dA-dkz">
+                                <rect key="frame" x="95" y="137.5" width="299" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Second" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gAg-tI-FLI">
+                                <rect key="frame" x="20" y="197" width="59" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Second" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LgA-EE-sOC">
+                                <rect key="frame" x="95" y="190.5" width="299" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OKg-ga-LaD" customClass="StickyButton" customModule="StickyButton">
+                                <rect key="frame" x="20" y="772" width="70" height="70"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="LgA-EE-sOC" secondAttribute="trailing" constant="20" id="6AB-rB-Lj5"/>
+                            <constraint firstItem="HTl-8H-AsL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="718-lW-8l0"/>
+                            <constraint firstItem="gAg-tI-FLI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="79N-Dr-gba"/>
+                            <constraint firstItem="LgA-EE-sOC" firstAttribute="centerY" secondItem="gAg-tI-FLI" secondAttribute="centerY" id="9RG-8O-TnB"/>
+                            <constraint firstItem="LgA-EE-sOC" firstAttribute="leading" secondItem="spl-dA-dkz" secondAttribute="leading" id="Sdq-W7-iOD"/>
+                            <constraint firstItem="gAg-tI-FLI" firstAttribute="top" secondItem="HTl-8H-AsL" secondAttribute="bottom" constant="32" id="VHl-YN-ptf"/>
+                            <constraint firstItem="LgA-EE-sOC" firstAttribute="leading" secondItem="gAg-tI-FLI" secondAttribute="trailing" constant="16" id="WbO-RE-9i4"/>
+                            <constraint firstItem="HTl-8H-AsL" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="d1L-1H-fpt"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="spl-dA-dkz" secondAttribute="trailing" constant="20" id="dOM-lI-1AM"/>
+                            <constraint firstItem="spl-dA-dkz" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="HTl-8H-AsL" secondAttribute="trailing" constant="18" id="kil-8E-MyQ"/>
+                            <constraint firstItem="spl-dA-dkz" firstAttribute="centerY" secondItem="HTl-8H-AsL" secondAttribute="centerY" id="sy8-yd-uVn"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="firstTextField" destination="spl-dA-dkz" id="ONH-Bt-Dq6"/>
+                        <outlet property="secondTextField" destination="LgA-EE-sOC" id="6o6-Hm-rAf"/>
+                        <outlet property="stickyButton" destination="OKg-ga-LaD" id="Ucr-ex-MQn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="126.5625"/>
+        </scene>
+    </scenes>
+</document>
