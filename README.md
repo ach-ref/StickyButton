@@ -9,14 +9,14 @@ A sticky floating action button for iOS.<br/>
 </p>
 
 <p align="center">
-    <a href="#features">Features</a>  ⦿ 
-    <a href="#preview">Preview</a>  ⦿ 
-    <a href="#requirements">Features</a>  ⦿ 
-    <a href="#features">Requirements</a>  ⦿ 
-    <a href="#installation">Installation</a>  ⦿ 
-    <a href="#usage">Usage</a>  ⦿ 
-    <a href="#todo">TODO</a>  ⦿ 
-    <a href="#author">Author</a>
+    <a href="#features">Features</a> ⦿ 
+    <a href="#preview">Preview</a> ⦿ 
+    <a href="#requirements">Requirements</a> ⦿ 
+    <a href="#installation">Installation</a> ⦿ 
+    <a href="#usage">Usage</a> ⦿ 
+    <a href="#todo">TODO</a> ⦿ 
+    <a href="#author">Author</a> ⦿ 
+    <a href="#license">License</a>
 </p>
 
 This project is inspired by the Floaty project which was inspired itself by the KCFloatingActionButton. Basically i wanted what the Floaty button does with more functionalities and flexibility.
@@ -145,6 +145,6 @@ stickyButton.itemTitleOffset = 20
 
 Achref Marzouki [https://github.com/ach-ref](https://github.com/ach-ref)
 
-## [License](#License)
+## [License](#license)
 
 `StickyButton` is available under the MIT license. See the LICENSE file for more info.
