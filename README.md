@@ -1,11 +1,25 @@
 # StickyButton
 A sticky floating action button for iOS.<br/>
+
+<p align="center">
+    <img src="https://img.shields.io/badge/Swift-5.0-orange" />
+    <img src="https://img.shields.io/cocoapods/v/StickyButton" />
+    <img src="https://img.shields.io/cocoapods/p/StickyButton" />
+    <img src="https://img.shields.io/cocoapods/l/StickyButton" />
+</p>
+
+<p align="center">
+    <a href="#features">Features</a>  ⦿ 
+    <a href="#preview">Preview</a>  ⦿ 
+    <a href="#requirements">Features</a>  ⦿ 
+    <a href="#features">Requirements</a>  ⦿ 
+    <a href="#installation">Installation</a>  ⦿ 
+    <a href="#usage">Usage</a>  ⦿ 
+    <a href="#todo">TODO</a>  ⦿ 
+    <a href="#author">Author</a>
+</p>
+
 This project is inspired by the Floaty project which was inspired itself by the KCFloatingActionButton. Basically i wanted what the Floaty button does with more functionalities and flexibility.
-
-<img src="https://img.shields.io/badge/Swift-5.0-orange" />
-
-[Features](#features) ⦿ [Preview](#preview) ⦿ [Requirements](#requirements) ⦿ [Installation](#installation) ⦿ [Usage](#usage) ⦿ [TODO](#todo) ⦿ [Author](#author) ⦿ [License](#license)
-
 
 ## [Features](#features)
 
@@ -55,8 +69,10 @@ Just add all the content of the `StickyButton` folder in your project.
 
 ### Interface builder
 
-<img src="./Resources/storyboard.gif" height="400" />
-<img src="./Resources/xcode-inspector.png" height="400" />
+<p align="center">
+    <img src="./Resources/storyboard.gif" height="400" />
+    <img src="./Resources/xcode-inspector.png" height="400" />
+</p>
 
 ### Global management
 
