@@ -2,10 +2,10 @@
 A sticky floating action button for iOS.<br/>
 
 <p align="center">
-    <img src="https://img.shields.io/badge/Swift-5.0-orange" />
-    <img src="https://img.shields.io/cocoapods/v/StickyButton" />
-    <img src="https://img.shields.io/cocoapods/p/StickyButton" />
-    <img src="https://img.shields.io/cocoapods/l/StickyButton" />
+    <a href="#"><img src="https://img.shields.io/badge/Swift-5.0-orange" /></a>
+    <a href="https://cocoapods.org/pods/StickyButton"><img src="https://img.shields.io/cocoapods/v/StickyButton" /></a>
+    <a href="https://cocoapods.org/pods/StickyButton"><img src="https://img.shields.io/cocoapods/p/StickyButton" /></a>
+    <a href="https://cocoapods.org/pods/StickyButton"><img src="https://img.shields.io/cocoapods/l/StickyButton" /></a>
 </p>
 
 <p align="center">
@@ -36,10 +36,10 @@ This project is inspired by the Floaty project which was inspired itself by the 
 ## [Preview](#preview)
 
 <p align="center">
-    <img src="./Resources/demo1.gif" width="200" />
-    <img src="./Resources/demo2.gif" width="200" />
-    <img src="./Resources/demo3.gif" width="200" />
-    <img src="./Resources/demo4.gif" width="200" />
+    <img src="https://raw.githubusercontent.com/ach-ref/StickyButton/master/Resources/demo1.gif" width="200" />
+    <img src="https://raw.githubusercontent.com/ach-ref/StickyButton/master/Resources/demo2.gif" width="200" />
+    <img src="https://raw.githubusercontent.com/ach-ref/StickyButton/master/Resources/demo3.gif" width="200" />
+    <img src="https://raw.githubusercontent.com/ach-ref/StickyButton/master/Resources/demo4.gif" width="200" />
 </p>
 
 ## [Requirements](#requirements)
@@ -70,8 +70,8 @@ Just add all the content of the `StickyButton` folder in your project.
 ### Interface builder
 
 <p align="center">
-    <img src="./Resources/storyboard.gif" height="400" />
-    <img src="./Resources/xcode-inspector.png" height="400" />
+    <img src="https://raw.githubusercontent.com/ach-ref/StickyButton/master/Resources/storyboard.gif" height="400" />
+    <img src="https://raw.githubusercontent.com/ach-ref/StickyButton/master/Resources/xcode-inspector.png" height="400" />
 </p>
 
 ### Global management
