@@ -272,7 +272,7 @@ open class StickyButtonItem: UIView {
         super.layoutSubviews()
         
         // icon bakcground circle
-        iconBackgroundView.layer.cornerRadius = iconBackgroundView.frame.width * 0.5
+        iconBackgroundView.layer.cornerRadius = size * 0.5
         // highlighted shapes
         setupHighlightedShapes()
         // update accessibility views frames
