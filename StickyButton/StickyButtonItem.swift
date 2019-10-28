@@ -67,7 +67,8 @@ open class StickyButtonItem: UIView {
         didSet {
             titleLabel.text = title
             titleBackgroundView.isHidden = title == nil
-//            accessibilityTitleValue = title
+            accessibilityLabel = title
+            accessibilityIdentifier = title
             setNeedsLayout()
         }
     }
@@ -214,6 +215,7 @@ open class StickyButtonItem: UIView {
         iconBackgroundView = UIView()
         iconBackgroundView.translatesAutoresizingMaskIntoConstraints = false
         iconBackgroundView.backgroundColor = iconBackgroundColor
+        iconBackgroundView.layer.cornerRadius = size * 0.5
         iconBackgroundView.layer.shadowOpacity = 1
         iconBackgroundView.layer.shadowRadius = 2
         iconBackgroundView.layer.shadowOffset = CGSize(width: 1, height: 1)
@@ -226,7 +228,6 @@ open class StickyButtonItem: UIView {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.text = title
         titleLabel.textColor = titleTextColor
-//        accessibilityTitleLabel = title
         titleFontChanged()
         
         // title background view
@@ -499,11 +500,12 @@ extension StickyButtonItem {
         // item's accessibility
         isAccessibilityElement = true
         accessibilityLabel = title
-        accessibilityIdentifier = title
         accessibilityTraits.insert(.button)
         // excluded
         titleLabel.isAccessibilityElement = false
         iconImageView.isAccessibilityElement = false
+        // UI testing
+        accessibilityIdentifier = title
     }
     
     /// Update the item's accessibility frames.

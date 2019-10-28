@@ -883,23 +883,4 @@ extension StickyButton {
         get { accessibilityView.accessibilityValue }
         set { accessibilityView.accessibilityValue = newValue }
     }
-    
-    /// Whether or not the button is an accessibility element.
-    /// A Boolean value indicating whether the receiver is an accessibility element that an assistive application can access.
-//    open override var isAccessibilityElement: Bool {
-//        get { accessibilityView.isAccessibilityElement }
-//        set { accessibilityView.isAccessibilityElement = newValue }
-//    }
-//
-//    /// The button's accessibility identifier. A string that identifies the element.
-//    open override var accessibilityIdentifier: String? {
-//        get { accessibilityView.accessibilityIdentifier }
-//        set { accessibilityView.accessibilityIdentifier = newValue }
-//    }
-//
-//    /// The button's accessibility traits. The combination of accessibility traits that best characterize the accessibility element.
-//    open override var accessibilityTraits: UIAccessibilityTraits {
-//        get { accessibilityView.accessibilityTraits }
-//        set { accessibilityView.accessibilityTraits = newValue }
-//    }
 }

@@ -14,12 +14,7 @@ open class StickyButtonViewController: UIViewController {
     // MARK: - Properties
     
     /// The sticky button instance. It's initialized with a default size of `70`.
-    public lazy var stickyButton: StickyButton = {
-        let button = StickyButton(size: StickyButton.size)
-        button.buttonBackgroundColor = .systemOrange
-        button.buttonTintColor = .white
-        return button
-    }()
+    public lazy var stickyButton = StickyButton(size: StickyButton.size)
     
     // MARK: - View life cycle
     
