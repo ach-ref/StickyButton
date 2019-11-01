@@ -260,8 +260,9 @@ open class StickyButtonItem: UIView {
         
         // title shape
         let titleFrame = titleBackgroundView.frame
+        let radius = titleBackgroundView.layer.cornerRadius
         highlightedTitleShape.removeFromSuperlayer()
-        highlightedTitleShape.path = UIBezierPath(roundedRect: titleFrame, cornerRadius: titleBackgroundView.layer.cornerRadius).cgPath
+        highlightedTitleShape.path = UIBezierPath(roundedRect: titleFrame, cornerRadius: radius).cgPath
         highlightedTitleShape.fillColor = UIColor.clear.cgColor
         layer.addSublayer(highlightedTitleShape)
     }
@@ -277,6 +278,13 @@ open class StickyButtonItem: UIView {
         setupHighlightedShapes()
         // update accessibility views frames
         updateItemAccessibility()
+    }
+    
+    open override func layoutSublayers(of layer: CALayer) {
+        super.layoutSublayers(of: layer)
+        
+        // highlighted shapes
+        setupHighlightedShapes()
     }
     
     /// Sets the fixed constraints of different elements. Basically it sets the vertical constraints.
