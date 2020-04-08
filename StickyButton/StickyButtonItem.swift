@@ -312,19 +312,20 @@ open class StickyButtonItem: UIView {
         titleBacgroundCenterY.isActive = true
         
         // icon
-        let iconTopAnchor = iconImageView.topAnchor.constraint(equalTo: iconBackgroundView.topAnchor, constant: 8)
+        let circleRadius = size * 0.5, squareRadius = size * sqrt(2) * 0.5
+        let padding = abs(squareRadius - circleRadius) + 4
+        let iconTopAnchor = iconImageView.topAnchor.constraint(equalTo: iconBackgroundView.topAnchor, constant: padding)
         iconTopAnchor.identifier = "iconTop"
         iconTopAnchor.isActive = true
-        let iconBottom = iconBackgroundView.bottomAnchor.constraint(equalTo: iconImageView.bottomAnchor, constant: 8)
+        let iconBottom = iconBackgroundView.bottomAnchor.constraint(equalTo: iconImageView.bottomAnchor, constant: padding)
         iconBottom.identifier = "iconBottom"
         iconBottom.isActive = true
-        let iconLeadingAnchor = iconImageView.leadingAnchor.constraint(equalTo: iconBackgroundView.leadingAnchor, constant: 8)
+        let iconLeadingAnchor = iconImageView.leadingAnchor.constraint(equalTo: iconBackgroundView.leadingAnchor, constant: padding)
         iconLeadingAnchor.identifier = "iconLeading"
         iconLeadingAnchor.isActive = true
-        let iconTrailing = iconBackgroundView.trailingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: 8)
+        let iconTrailing = iconBackgroundView.trailingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: padding)
         iconTrailing.identifier = "iconTrailing"
         iconTrailing.isActive = true
-        
         
         // icon background
         let iconBackgroundTopAcnhor = iconBackgroundView.topAnchor.constraint(equalTo: topAnchor)

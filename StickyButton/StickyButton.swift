@@ -136,39 +136,54 @@ open class StickyButton: UIView {
     
     /// The height of each item. The default value is `50`.
     @IBInspectable
-    open var itemSize: CGFloat = StickyButtonItem.size
+    open var itemSize: CGFloat = StickyButtonItem.size {
+        didSet { setMenuItems(items) }
+    }
     
     /// The image tint color for each item. The rendering mode of the icon (image) needs to be set to `.alwaysTemplate` in order to get the icon tinted.
     /// The default value is `nil`.
     @IBInspectable
-    open var itemIconTintColor: UIColor?
+    open var itemIconTintColor: UIColor? {
+        didSet { setMenuItems(items) }
+    }
     
     /// The icon's circle background color for each item. The default value is `UIcolor.white`.
     @IBInspectable
-    open var itemIconBackground: UIColor = StickyButtonItem.iconBackgroundColor
+    open var itemIconBackground: UIColor = StickyButtonItem.iconBackgroundColor {
+        didSet { setMenuItems(items) }
+    }
     
     /// The title's text color for each item. The default value is `UIColor.darkGray`.
     @IBInspectable
-    open var itemTitleTextColor: UIColor = StickyButtonItem.titleTextColor
+    open var itemTitleTextColor: UIColor = StickyButtonItem.titleTextColor {
+        didSet { setMenuItems(items) }
+    }
     
     /// The title's background color for each item. The default value is `UIcolor.white`.
     @IBInspectable
-    open var itemTitleBackground: UIColor = StickyButtonItem.titleBackgroundColor
+    open var itemTitleBackground: UIColor = StickyButtonItem.titleBackgroundColor {
+        didSet { setMenuItems(items) }
+    }
     
     /// The title's font name for each item. The default value is `Helvetica`.
     @IBInspectable
-    open var itemTitleFontName: String = StickyButtonItem.titleFontName
+    open var itemTitleFontName: String = StickyButtonItem.titleFontName {
+        didSet { setMenuItems(items) }
+    }
     
     /// The title's font size for each item. The default value is `13`.
     @IBInspectable
-    open var itemTitleFontSize: CGFloat = StickyButtonItem.titleFontSize
+    open var itemTitleFontSize: CGFloat = StickyButtonItem.titleFontSize {
+        didSet { setMenuItems(items) }
+    }
     
     /// The distance between the titile and the icon for each item. The default value is `20`.
     @IBInspectable
-    open var itemTitleOffset: CGFloat = StickyButtonItem.titleOffset
+    open var itemTitleOffset: CGFloat = StickyButtonItem.titleOffset {
+        didSet { setMenuItems(items) }
+    }
     
     // MARK: - Properties
-    
     
     /// Represents a global manager of a unique instance of the button which will be present in all screens.
     public static let global = StickyButtonManager.shared
@@ -764,10 +779,15 @@ open class StickyButton: UIView {
         guard let edge = superview?.safeAreaLayoutGuide else { return }
         // add item as a subview
         item.removeFromSuperview()
+        if let heightAnchor = item.constraints.filter({ $0.identifier == "ItemHeightAnchor" }).first {
+            item.removeConstraint(heightAnchor)
+        }
         addSubview(item)
         // item constraints
         item.translatesAutoresizingMaskIntoConstraints = false
-        item.heightAnchor.constraint(equalToConstant: itemSize).isActive = true
+        let heightConstraint = item.heightAnchor.constraint(equalToConstant: itemSize)
+        heightConstraint.identifier = "ItemHeightAnchor"
+        heightConstraint.isActive = true
         item.leadingAnchor.constraint(equalTo: edge.leadingAnchor, constant: horizontalMargin).isActive = true
         edge.trailingAnchor.constraint(equalTo: item.trailingAnchor, constant: horizontalMargin).isActive = true
         
