@@ -77,7 +77,9 @@ open class StickyButton: UIView {
     
     /// The expanding circular view (when the menu is shown) background color.
     @IBInspectable
-    open var overlayViewBackgroundColor: UIColor = UIColor.black.withAlphaComponent(0.3)
+    open var overlayViewBackgroundColor: UIColor = UIColor.black.withAlphaComponent(0.3) {
+        didSet { overlayView.backgroundColor = overlayViewBackgroundColor }
+    }
     
     /// The button's image. By default it's a plus sign.
     @IBInspectable
@@ -403,6 +405,11 @@ open class StickyButton: UIView {
     
     /// Draws the overlay (expanding background)
     private func layoutOverlayView() {
+        
+        guard !isOpen else {
+            return
+        }
+        
         overlayView.removeFromSuperview()
         let currentTransform = overlayView.transform
         overlayView.transform = .identity

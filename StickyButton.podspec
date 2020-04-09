@@ -11,7 +11,7 @@ Pod::Spec.new do |spec|
   # ―――  Spec Metadata  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   
   spec.name         = "StickyButton"
-  spec.version      = "1.0.5"
+  spec.version      = "1.0.6"
   spec.summary      = "A sticky floating button menu."
   spec.homepage     = "https://github.com/ach-ref/StickyButton"
   spec.description  = "A sticky floating action button for iOS. It sticks to bottom left or right side of the screen. You can change the side by a simple swipe. It's a fancy and nice way to navigate between controllers for example."
