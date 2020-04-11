@@ -1,5 +1,5 @@
 PODS:
-  - StickyButton (1.0)
+  - StickyButton (1.0.6)
 
 DEPENDENCIES:
   - StickyButton (from `.`)
@@ -10,8 +10,8 @@ EXTERNAL SOURCES:
     :target: StickyButtonExample
 
 SPEC CHECKSUMS:
-  StickyButton: 3f333ca1f1e338a47b13e53cd7ee017289d11bab
+  StickyButton: 2a98b0c5382ce64443e7e51f03fc2d59aa9ce9eb
 
 PODFILE CHECKSUM: caec10bfef7fe68f7c072edf17fca2c497f06eb3
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.9.1

@@ -53,7 +53,7 @@ This project is inspired by the Floaty project which was inspired itself by the 
 
 ```ruby
 use_frameworks!
-pod 'StickyButton'
+pod 'StickyButton', '~> 1.0'
 ```
 Then run the install command
 
@@ -135,9 +135,27 @@ stickyButton.itemTitleFontSize = 13
 stickyButton.itemTitleOffset = 20
 ```
 
+### delegate
+
+You can use the `StickyButtonDelegate` protocol to handle `StickyButton` events.
+
+```swift
+func stickyButtonShouldShowItems() -> Bool
+func stickyButtonWillShowItems()
+func stickyButtonDidShowItems()
+
+func stickyButtonShouldHideItems() -> Bool
+func stickyButtonWillHideItems()
+func stickyButtonDidHideItems()
+
+func stickyButtonShouldChangeSide() -> Bool
+func stickyButtonWillChangeSide()
+func stickyButtonDidChangeSide()
+```
+
 ## [TODO](#todo)
 
-* [ ] Add a delegate support
+* ✅ ~~Add a delegate support~~
 * [ ] Add different animations for showing the menu
 * [ ] Unit & UI test coverage
 

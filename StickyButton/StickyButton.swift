@@ -190,6 +190,8 @@ open class StickyButton: UIView {
     /// Represents a global manager of a unique instance of the button which will be present in all screens.
     public static let global = StickyButtonManager.shared
     
+    public var delegate: StickyButtonDelegate?
+    
     /// True when the menu is shown
     open var isOpen: Bool = false
     
@@ -424,6 +426,28 @@ open class StickyButton: UIView {
     
     // MARK: - Positioning
     
+    /// Perform an animating side switch if needed.
+    ///
+    /// - Parameter side: The desired side of type `StickyButtonSide`.
+    /// - Returns: A boolean indicating if wether or not it's possible to change the side.
+    /// Basically the function is called with the side param equal to the current side it will returns `false`.
+    @discardableResult
+    open func setStickySide(_ side: StickyButtonSide) -> Bool {
+        
+        guard side != stickySide else {
+            return false
+        }
+        
+        if side == .left {
+            stickTotheLeft()
+        }
+        else {
+            stickTotheRight()
+        }
+        
+        return true
+    }
+    
     /// Updates the button's position
     private func updatePosition() {
         placeSelf(newDirection: stickySide, animated: false)
@@ -432,16 +456,25 @@ open class StickyButton: UIView {
     /// Update the button's position and stick it to the left.
     /// - Parameter animated: A boolean indicating whether or not to animate the position changes.
     private func stickTotheLeft(animated: Bool = false) {
-        
+        // notify delegate before side switch
+        delegate?.stickyButtonWillChangeSide()
+        // switch side
         placeSelf(newDirection: .left, animated: animated)
         items.forEach({ $0.stickySideChanged() })
+        // notify delegate after side switch
+        delegate?.stickyButtonDidChangeSide()
     }
     
     /// Update the button's position and stick it to the right.
     /// - Parameter animated: A boolean indicating whether or not to animate the position changes.
     private func stickTotheRight(animated: Bool = false) {
+        // notify delegate before side switch
+        delegate?.stickyButtonWillChangeSide()
+        // switch side
         placeSelf(newDirection: .right, animated: animated)
         items.forEach({ $0.stickySideChanged() })
+        // notify delegate after side switch
+        delegate?.stickyButtonDidChangeSide()
     }
     
     /// Place the button in the screen according to the given new direction (side).
@@ -570,7 +603,7 @@ open class StickyButton: UIView {
     /// - Parameter gestureRecognizer: A concrete subclass of UIGestureRecognizer that looks for swiping gestures in one or more directions.
     @objc private func swipeHandler(_ gestureRecognizer: UISwipeGestureRecognizer) {
         
-        guard gestureRecognizer.state == .ended, !isOpen else {
+        guard gestureRecognizer.state == .ended, !isOpen, delegate?.stickyButtonShouldChangeSide() ?? true else {
             return
         }
         
@@ -591,6 +624,7 @@ open class StickyButton: UIView {
     open func toggleMenu() {
         // show
         guard isOpen else {
+            guard delegate?.stickyButtonShouldShowItems() ?? true else { return }
             items.forEach({ $0.stickySideChanged() })
             showMenu()
             return
@@ -619,6 +653,9 @@ open class StickyButton: UIView {
             performEmptyMenuAnimation()
             return
         }
+        
+        // notify delegate that items will shown
+        delegate?.stickyButtonWillShowItems()
         
         // vars
         let screenBounds = UIScreen.main.bounds, circleCenter = CGPoint(x: frame.width * 0.5, y: frame.height * 0.5)
@@ -656,12 +693,23 @@ open class StickyButton: UIView {
         }, completion: { success in
             self.isOpen = true
             self.updateButtonAccessibility()
+            // notify delegate that items have been shown
+            self.delegate?.stickyButtonDidShowItems()
         })
         CATransaction.commit()
     }
     
     /// Hides the menu with animation.
     open func hideMenu() {
+        
+        // make sure the menu is open
+        guard isOpen else {
+            return
+        }
+        
+        // notify delegate that items will be hidden
+        delegate?.stickyButtonWillHideItems()
+        
         // make sure no pending layout
         layoutIfNeeded()
         // update iems anchors
@@ -685,6 +733,8 @@ open class StickyButton: UIView {
             self.overlayView.alpha = 0
             self.isOpen = false
             self.updateButtonAccessibility()
+            // notify delegate that items have been hidden
+            self.delegate?.stickyButtonDidHideItems()
         })
         CATransaction.commit()
     }
