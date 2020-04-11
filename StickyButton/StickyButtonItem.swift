@@ -313,7 +313,7 @@ open class StickyButtonItem: UIView {
         
         // icon
         let circleRadius = size * 0.5, squareRadius = size * sqrt(2) * 0.5
-        let padding = abs(squareRadius - circleRadius) + 4
+        let padding = (abs(squareRadius - circleRadius) * 0.5) + 4
         let iconTopAnchor = iconImageView.topAnchor.constraint(equalTo: iconBackgroundView.topAnchor, constant: padding)
         iconTopAnchor.identifier = "iconTop"
         iconTopAnchor.isActive = true
