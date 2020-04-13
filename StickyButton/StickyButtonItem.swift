@@ -56,7 +56,10 @@ open class StickyButtonItem: UIView {
     
     /// The item's height. The default value is `50`.
     open var size: CGFloat = StickyButtonItem.size {
-        didSet { setNeedsLayout() }
+        didSet {
+            setIconConstraints()
+            setNeedsLayout()
+        }
     }
     
     /// The item's tap area horizontal padding. The default value is `10`.
@@ -312,20 +315,7 @@ open class StickyButtonItem: UIView {
         titleBacgroundCenterY.isActive = true
         
         // icon
-        let circleRadius = size * 0.5, squareRadius = size * sqrt(2) * 0.5
-        let padding = (abs(squareRadius - circleRadius) * 0.5) + 4
-        let iconTopAnchor = iconImageView.topAnchor.constraint(equalTo: iconBackgroundView.topAnchor, constant: padding)
-        iconTopAnchor.identifier = "iconTop"
-        iconTopAnchor.isActive = true
-        let iconBottom = iconBackgroundView.bottomAnchor.constraint(equalTo: iconImageView.bottomAnchor, constant: padding)
-        iconBottom.identifier = "iconBottom"
-        iconBottom.isActive = true
-        let iconLeadingAnchor = iconImageView.leadingAnchor.constraint(equalTo: iconBackgroundView.leadingAnchor, constant: padding)
-        iconLeadingAnchor.identifier = "iconLeading"
-        iconLeadingAnchor.isActive = true
-        let iconTrailing = iconBackgroundView.trailingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: padding)
-        iconTrailing.identifier = "iconTrailing"
-        iconTrailing.isActive = true
+        setIconConstraints()
         
         // icon background
         let iconBackgroundTopAcnhor = iconBackgroundView.topAnchor.constraint(equalTo: topAnchor)
@@ -337,6 +327,24 @@ open class StickyButtonItem: UIView {
         let iconBackgroundWidth = iconBackgroundView.widthAnchor.constraint(equalTo: iconBackgroundView.heightAnchor)
         iconBackgroundWidth.identifier = "iconBackgroundWidth"
         iconBackgroundWidth.isActive = true
+    }
+    
+    private func setIconConstraints() {
+        
+        let padding: CGFloat = 4
+        let squareSide = (size * sqrt(2) * 0.5) - padding
+        
+        setElementConstraint(container: iconImageView, anchor: iconImageView.widthAnchor, constant: squareSide, identifier: "iconWidth")
+        setElementConstraint(container: iconBackgroundView,
+                             firstAnchor: iconImageView.centerXAnchor,
+                             secondAnchor: iconBackgroundView.centerXAnchor,
+                             identifier: "iconCenterX")
+        
+        setElementConstraint(container: iconImageView, anchor: iconImageView.heightAnchor, constant: squareSide, identifier: "iconHeight")
+        setElementConstraint(container: iconBackgroundView,
+                             firstAnchor: iconImageView.centerYAnchor,
+                             secondAnchor: iconBackgroundView.centerYAnchor,
+                             identifier: "iconCenterY")
     }
     
     /// Sets and updates the horizontal constraints according to the current sticky side.
@@ -356,44 +364,50 @@ open class StickyButtonItem: UIView {
     private func stackElementsToTheLeft() {
         // icon background view
         let stickyButtonCircleRadius = (stickyButton?.frame.width ?? size) * 0.5
-        setElementXAxisConstraint(firstAnchor: iconBackgroundView.centerXAnchor,
-                                  secondAnchor: leadingAnchor,
-                                  constant: stickyButtonCircleRadius,
-                                  identifier: "iconBackgroundCenterX")
+        setElementConstraint(container: self,
+                             firstAnchor: iconBackgroundView.centerXAnchor,
+                             secondAnchor: leadingAnchor,
+                             constant: stickyButtonCircleRadius,
+                             identifier: "iconBackgroundCenterX")
         // title leading
-        setElementXAxisConstraint(firstAnchor: titleBackgroundView.leadingAnchor,
-                                  secondAnchor: iconBackgroundView.trailingAnchor,
-                                  constant: titleOffset,
-                                  identifier: "titleBackgroundOffset")
+        setElementConstraint(container: self,
+                             firstAnchor: titleBackgroundView.leadingAnchor,
+                             secondAnchor: iconBackgroundView.trailingAnchor,
+                             constant: titleOffset,
+                             identifier: "titleBackgroundOffset")
         // title trailing
-        setElementXAxisConstraint(firstAnchor: trailingAnchor,
-                                  secondAnchor: titleBackgroundView.trailingAnchor,
-                                  constant: 0,
-                                  identifier: "titleBackgroundDistanceFromEdge",
-                                  priority: .defaultHigh,
-                                  operation: ">=")
+        setElementConstraint(container: self,
+                             firstAnchor: trailingAnchor,
+                             secondAnchor: titleBackgroundView.trailingAnchor,
+                             constant: 0,
+                             identifier: "titleBackgroundDistanceFromEdge",
+                             priority: .defaultHigh,
+                             operation: ">=")
     }
     
     /// Stacks elements on the right side.
     private func stackElementsToTheRight() {
         // button
         let stickyButtonCircleRadius = (stickyButton?.frame.width ?? size) * 0.5
-        setElementXAxisConstraint(firstAnchor: trailingAnchor,
-                                  secondAnchor: iconBackgroundView.centerXAnchor,
-                                  constant: stickyButtonCircleRadius,
-                                  identifier: "iconBackgroundCenterX")
+        setElementConstraint(container: self,
+                             firstAnchor: trailingAnchor,
+                             secondAnchor: iconBackgroundView.centerXAnchor,
+                             constant: stickyButtonCircleRadius,
+                             identifier: "iconBackgroundCenterX")
         // title trailing
-        setElementXAxisConstraint(firstAnchor: iconBackgroundView.leadingAnchor,
-                                  secondAnchor: titleBackgroundView.trailingAnchor,
-                                  constant: titleOffset,
-                                  identifier: "titleBackgroundOffset")
+        setElementConstraint(container: self,
+                             firstAnchor: iconBackgroundView.leadingAnchor,
+                             secondAnchor: titleBackgroundView.trailingAnchor,
+                             constant: titleOffset,
+                             identifier: "titleBackgroundOffset")
         // title leading
-        setElementXAxisConstraint(firstAnchor: titleBackgroundView.leadingAnchor,
-                                  secondAnchor: leadingAnchor,
-                                  constant: 0,
-                                  identifier: "titleBackgroundDistanceFromEdge",
-                                  priority: .defaultHigh,
-                                  operation: ">=")
+        setElementConstraint(container: self,
+                             firstAnchor: titleBackgroundView.leadingAnchor,
+                             secondAnchor: leadingAnchor,
+                             constant: 0,
+                             identifier: "titleBackgroundDistanceFromEdge",
+                             priority: .defaultHigh,
+                             operation: ">=")
     }
     
     /// Called when the sticky button was dragged to a different side.
@@ -453,22 +467,25 @@ open class StickyButtonItem: UIView {
     
     // MARK: - Helpers
     
-    /// Sets or update an existing constraint for the x-axis according to the new params.
+    /// Sets or updates an existing constraint according to the new params.
+    ///
+    /// - Parameter container: The element which contains the constraint to update.
     /// - Parameter firstAnchor: The first element's acnhor.
     /// - Parameter secondAnchor: The first element's acnhor.
     /// - Parameter constant: The constant of the constraint.
     /// - Parameter identifier: A unique `String` identifier.
     /// - Parameter priority: The priority of the constarint. By default it's set to `UILayoutPriority.required`.
     /// - Parameter operation: A string representing the comparison operator. Possible values are `"=="`, `"<="` and `">="`.
-    private func setElementXAxisConstraint(firstAnchor: NSLayoutXAxisAnchor,
-                                           secondAnchor: NSLayoutXAxisAnchor,
-                                           constant: CGFloat,
-                                           identifier: String,
-                                           priority: UILayoutPriority = .required,
-                                           operation: String = "==") {
+    private func setElementConstraint<T: AnyObject>(container: AnyObject,
+                                                    firstAnchor: NSLayoutAnchor<T>,
+                                                    secondAnchor: NSLayoutAnchor<T>,
+                                                    constant: CGFloat = 0,
+                                                    identifier: String,
+                                                    priority: UILayoutPriority = .required,
+                                                    operation: String = "==") {
         
-        if let constraint = constraints.filter({ $0.identifier == identifier }).first {
-            removeConstraint(constraint)
+        if let constraint = container.constraints?.filter({ $0.identifier == identifier }).first {
+            container.removeConstraint(constraint)
         }
         
         var constraint: NSLayoutConstraint?
@@ -476,6 +493,39 @@ open class StickyButtonItem: UIView {
         case "==": constraint = firstAnchor.constraint(equalTo: secondAnchor, constant: constant)
         case "<=": constraint = firstAnchor.constraint(lessThanOrEqualTo: secondAnchor, constant: constant)
         case ">=": constraint = firstAnchor.constraint(greaterThanOrEqualTo: secondAnchor, constant: constant)
+        default: break
+        }
+        
+        guard let aConstraint = constraint else { return }
+        aConstraint.priority = priority
+        aConstraint.identifier = identifier
+        aConstraint.isActive = true
+    }
+    
+    /// Sets or updates an existing constraint according to the new params.
+    ///
+    /// - Parameter container: The element which contains the constraint to update.
+    /// - Parameter firstAnchor: The element's acnhor.
+    /// - Parameter constant: The constant of the constraint.
+    /// - Parameter identifier: A unique `String` identifier.
+    /// - Parameter priority: The priority of the constarint. By default it's set to `UILayoutPriority.required`.
+    /// - Parameter operation: A string representing the comparison operator. Possible values are `"=="`, `"<="` and `">="`.
+    private func setElementConstraint(container: AnyObject,
+                                      anchor: NSLayoutDimension,
+                                      constant: CGFloat,
+                                      identifier: String,
+                                      priority: UILayoutPriority = .required,
+                                      operation: String = "==") {
+        
+        if let constraint = container.constraints?.filter({ $0.identifier == identifier }).first {
+            container.removeConstraint(constraint)
+        }
+        
+        var constraint: NSLayoutConstraint?
+        switch operation {
+        case "==": constraint = anchor.constraint(equalToConstant: constant)
+        case "<=": constraint = anchor.constraint(lessThanOrEqualToConstant: constant)
+        case ">=": constraint = anchor.constraint(greaterThanOrEqualToConstant: constant)
         default: break
         }
         
